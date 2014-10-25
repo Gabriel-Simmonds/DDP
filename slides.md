@@ -55,7 +55,8 @@ Slide 4: Stock price time-series plot
 <small>Just as in the optPricer shiny app, with the code below, we download a stock price time-series for Tiffany (TIF) from finance.yahoo.com  
 We read the data into a dataframe, set the Date column of the dataframe to be a date variable, and then plot out the closing prices against the date.  
 This time-series dataframe is read into the program in Slide 5 along with details of the option from Slide 3 in order to derive an option price, just as occurs in the optPricer shiny app.</small>
-```{r}
+
+```r
 fileURL <- "http://real-chart.finance.yahoo.com/table.csv?s=TIF&a=00&b=1&c=2009&d=10&e=14&f=2014&g=d&ignore=.csv"
 priceData <- read.table(fileURL, header = TRUE, sep = ",")
 priceData$Date <- as.Date(priceData$Date)
@@ -63,11 +64,14 @@ plot(priceData$Date, priceData$Close, type = "l", col = "limegreen",
      main = "TIF stock prices", xlab = "Year", ylab = "Stock price (US$)")
 ```
 
+![plot of chunk unnamed-chunk-1](slides-figure/unnamed-chunk-1.png) 
+
 
 
 Slide 5: Result of option price calculation
 ========================================================
-```{r}
+
+```r
 t <- as.Date("2013-10-14"); T <- as.Date("2014-10-14")
 S <- 76.46; K <- 81.50; rf <- 0.035; OT <- "Put"
 pricerFn <- function(t, T, K, rf, OT) {
@@ -85,4 +89,8 @@ pricerFn <- function(t, T, K, rf, OT) {
 			}
             }
 paste("Price of ", OT, " option is US$ ", round(pricerFn(t, T, K, rf, OT), digits = 6), sep = "")
+```
+
+```
+[1] "Price of Put option is US$ 2.247172"
 ```
