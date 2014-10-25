@@ -84,5 +84,5 @@ pricerFn <- function(t, T, K, rf, OT) {
 				priceC
 			}
             }
-paste("Price of ", OT, " option is US$", round(pricerFn(t, T, K, rf, OT), digits = 6), sep = "")
+paste("Price of ", OT, " option is US$ ", round(pricerFn(t, T, K, rf, OT), digits = 6), sep = "")
 ```
